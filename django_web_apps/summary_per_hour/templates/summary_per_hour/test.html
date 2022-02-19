@@ -1,0 +1,24 @@
+{% load static %}
+<table class="table table-bordered table-sm">
+    {% for item in table.values %}
+
+        {% for el in item.values %}
+
+            <tr>
+                {% for foo in el %}
+{#                    <p>{{ foo }}</p>#}
+                    <td valign="middle" class="{{ foo.class_name }}" colspan={{ foo.colspan }}
+                            rowspan={{ foo.rowspan }}>{{ foo.value }}</td>
+
+                {% endfor %}
+
+            </tr>
+
+        {% endfor %}
+
+    {% endfor %}
+
+
+</table>
+
+<script src="{% static "js/summary_per_hour/get_value_from_td.js" %}"></script>

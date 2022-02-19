@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 ">
+            <input name="mydate" type="text" id="datepicker" disabled class="input">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 disp_sv">
+            <ul class="nav nav-tabs">
+                {% for tab in object_list %}
+
+                    {% if user.username == tab.user.username %}
+                        <li class="nav-item">
+                            <a id="{{ tab.name }}" name="tabs_for_disp_svodka" class="nav-link">{{ tab.name_ru }}</a>
+                        </li>
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="test"></div>
+    {% block test %} {% endblock %}
+
+
+{% endblock %}
+<p>{{ test }}</p>
+{% block script %}
+{#    <script src="{% static "js/summary_per_hour/btns_class_toggle.js" %}"></script>#}
+    <script src="{% static "js/summary_per_hour/get_date.js" %}"></script>
+    <script src="{% static "js/summary_per_hour/btns_class_toggle.js" %}"></script>
+{#    <script src="{% static "js/summary_per_hour/load_table_by_date_and_table_name.js" %}"></script>#}
+{% endblock %}
+
+
